@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.35" prefHeight="512.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.MainViewController">
+    <fx:define>
+        <Integer fx:id="moins1" fx:value="-1" />
+    </fx:define>
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30" />
+            <RowConstraints minHeight="10.0" prefHeight="30" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30" />
+        </rowConstraints>
+        <TextField fx:id="TFRechercher" promptText="Rechercher" />
+        <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" GridPane.rowIndex="1">
+            <rowConstraints>
+                <RowConstraints minHeight="10" />
+                <RowConstraints minHeight="10" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <CheckBox fx:id="checkPerso" onAction="#checkBoxChanged" text="Personnel" />
+            <CheckBox fx:id="checkPro" onAction="#checkBoxChanged" text="Professionel" GridPane.columnIndex="1" />
+        </GridPane>
+        
+        <ListView fx:id="listViewPersonne" items="${controller.manager.contacts}" GridPane.rowIndex="2" />
+        
+        <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" GridPane.rowIndex="3">
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" />
+                <RowConstraints minHeight="10.0" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <Button onAction="#clicOuvrirFenetreAmodale" text="Ajouter" />
+            <Button onAction="#buttonDelPersonne" text="Supprimer" GridPane.columnIndex="1" />
+        </GridPane>
+    </GridPane>
+    <GridPane alignment="CENTER">
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Button onAction="#buttonAfficherLesInfos" text="Infos" />
+            <Button onAction="#buttonAfficherLesGroupes" text="Groupes" />
+        </HBox>
+     
+        <!--GridPane permettant l'affichage des infos du contact sélectionné.-->
+        <GridPane fx:id="GPInfos" alignment="CENTER" hgap="10.0" vgap="10.0" GridPane.rowIndex="1">
+            <!--<GridPane hgap="10.0" vgap="10.0" visible="${listViewPersonne.selectionModel.selectedIndex != moins1}" alignment="CENTER">-->
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="72" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <Label text="Nom : " />
+            <Label text="Prénom : " GridPane.rowIndex="1" />
+            <Label text="Téléphones : " GridPane.rowIndex="2" />
+            <Label text="Mail : " GridPane.rowIndex="4" />
+            <Label text="Naissance : " GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldNom" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldPrenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ListView fx:id="listViewTelephones" items="${controller.manager.selectedPersonne.telephones}" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="aucunTelephones" text="Aucun" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button onAction="#buttonAjouterTel" text="Ajouter">
+                    <HBox.margin>
+                        <Insets right="30.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="buttonSupprimerTel" onAction="#buttonSupprimerTel" text="Supprimer" />
+            </HBox>
+            <TextField fx:id="textFieldMail" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="pickerDateDeNaissance" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        </GridPane>
+    
+        <!--GridPane permettant l'affichage de la liste des groupes auquel est assigné le contact sélectionné-->
+        <GridPane fx:id="GPGroupes" alignment="TOP_CENTER" hgap="10.0" vgap="10.0" visible="false" GridPane.rowIndex="1">
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+            <ChoiceBox fx:id="choiceBoxGroupes" items="${controller.manager.repertoire.groupes}" minWidth="100" />
+            <Button onAction="#buttonAddGroupe" text="Ajouter au groupe" GridPane.rowIndex="1" />
+            <ListView fx:id="listViewGroupes" items="${controller.manager.groupes}" prefHeight="100" GridPane.rowIndex="2" />
+            <Button onAction="#buttonDelFromGroupe" text="Supprimer" GridPane.rowIndex="3" />
+            <Button alignment="BOTTOM_RIGHT" onAction="#clicOuvrirFenetreAmodaleGroupe" text="Gestion des groupes" GridPane.rowIndex="4" />
+            <Label fx:id="lblNbGroupesContact" GridPane.rowIndex="5"/>
+        </GridPane>
+    </GridPane>
+</SplitPane>

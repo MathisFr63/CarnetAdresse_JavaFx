@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.AjoutGroupeController">
+    <VBox alignment="CENTER" spacing="20.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Nom" />
+            <TextField fx:id="TFNom" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+      <ListView fx:id="LVGroupe" items="${controller.manager.repertoire.groupes}" prefHeight="200.0" prefWidth="200.0" />
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+        <HBox alignment="CENTER_LEFT" spacing="10.0" />
+        
+        <Button onAction="#ButtonCreateGroupe" text="Ajouter" />
+        <Button onAction="#ButtonDeleteGroupe" text="Supprimer" />
+    </VBox>
+</AnchorPane>

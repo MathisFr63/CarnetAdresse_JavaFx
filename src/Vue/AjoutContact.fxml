@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VueController.AjoutContactController">
+    <VBox alignment="CENTER" spacing="20.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Nom" />
+            <TextField fx:id="TFNom" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Prénom" />
+            <TextField fx:id="TFPrénom" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Téléphone" />
+            <TextField fx:id="TFTéléphone" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Mail" />
+            <TextField fx:id="TFMail" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Naissance" />
+            <DatePicker fx:id="DPNaissance" />
+        </HBox>
+        <ChoiceBox prefWidth="150.0" fx:id="CBType" />
+        <Button onAction="#ButtonAddPersonne" text="Ajouter" />
+    </VBox>
+</AnchorPane>

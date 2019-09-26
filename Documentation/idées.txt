@@ -1,0 +1,9 @@
+﻿- Générer la documentation du code
+
+- Revoir l'UML
+- Revoir la description du diagramme UML
+- Justifier l'utilisation de certains patrons de conceptions
+- Revoir le contexte
+- Faire un diagramme de cas d'utilisation
+
+- Faire en sorte que PersonnePerso est une date de naissance et PersonnePro un lieu de travail ??
